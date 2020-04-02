@@ -8,7 +8,6 @@ function download(filename, text) {
     pom.setAttribute('download', filename);
 
     if (document.createEvent) {
-        console.log(event);
         event.initEvent('click', true, true);
         pom.dispatchEvent(event);
     }
@@ -798,6 +797,9 @@ function transpose(rots, b) {
         nn.push(x_tag("n33", 1 - (2 * (qx ** 2)) - (2 * (qy ** 2))));
         nn.push(x_tag("n34", cached(b, "n34")));
 
+        if (b == "1") {
+            b = "0";
+        }
         var skel = z_tag("skel", { frame: "0", bone: b }, nn)
         return skel;
         // var skeletal = y_tag("skeletalAnimation", skel);
