@@ -1,3 +1,4 @@
+var pelvis = {"n14": 0, "n24": 663.894, "n34": -0.0000282434};
 var output = [];
 var event = document.createEvent('MouseEvents');
 var pom = document.createElement('a');
@@ -57,15 +58,7 @@ function cached(b, idx) {
             }
             break;
         case "1":
-            switch (idx) {
-                case "n14":
-                    return 0;
-                case "n24":
-                    return 663.894;
-                case "n34":
-                    return -0.0000282434;
-            }
-            break;
+            return pelvis[idx];
         case "2":
             switch (idx) {
                 case "n14":
@@ -852,7 +845,16 @@ function convert(xaf) {
             var bone_id = line.substr(start, end);
             bone = bone_id;
         }
-        if (line.includes("ROTATION")) {
+        else if (line.includes("TRANSLATION")) {
+            var start = line.indexOf(">") + 1;
+            var end = line.indexOf("</") - start;
+            var translations = line.substr(start, end);
+            translations = translations.split(" ").map(num => Number(num));
+            pelvis["n14"] = translations[0];
+            pelvis["n24"] = translations[2] - 663.894;
+            pelvis["n34"] = translations[1];
+        }
+        else if (line.includes("ROTATION")) {
             var start = line.indexOf(">") + 1;
             var end = line.indexOf("</") - start;
             var rotations = line.substr(start, end);
