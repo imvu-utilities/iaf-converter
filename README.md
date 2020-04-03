@@ -1,4 +1,4 @@
-# IMVU JS
+# IMVU Apps
 
 [Index](https://imvu-utilities.github.io/imvu-js/)
 
