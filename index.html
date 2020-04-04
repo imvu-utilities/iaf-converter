@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMVU JS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <title>IMVU Apps</title>
 </head>
 
 <body>
@@ -13,6 +15,13 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v.0.0.4</label><br>
         <input id="upload" type="file" name="files[]" size=30><br>
     </form>
+    <br>
+    <form action="javascript:;" onsubmit="unhide(this)">
+        <label for="hov-tag">Hidden Outfit Viewer:</label>
+        <input type="text" name="hov-tag" id="hov-url" size="50">
+        <input type="submit" id="unhide-btn" value="Unhide">
+    </form>
+    <div id="hov-container"></div>
     <script src="./src/js/app.js"></script>
     <script src="./src/js/hov.js"></script>
 </body>
